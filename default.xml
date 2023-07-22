@@ -1,0 +1,110 @@
+<!DOCTYPE manifest [
+
+  <!ELEMENT manifest (notice?,
+                      remote*,
+                      default?,
+                      manifest-server?,
+                      submanifest*?,
+                      remove-project*,
+                      project*,
+                      extend-project*,
+                      repo-hooks?,
+                      superproject?,
+                      contactinfo?,
+                      include*)>
+
+  <!ELEMENT notice (#PCDATA)>
+
+  <!ELEMENT remote (annotation*)>
+  <!ATTLIST remote name         ID    #REQUIRED>
+  <!ATTLIST remote alias        CDATA #IMPLIED>
+  <!ATTLIST remote fetch        CDATA #REQUIRED>
+  <!ATTLIST remote pushurl      CDATA #IMPLIED>
+  <!ATTLIST remote review       CDATA #IMPLIED>
+  <!ATTLIST remote revision     CDATA #IMPLIED>
+
+  <!ELEMENT default EMPTY>
+  <!ATTLIST default remote      IDREF #IMPLIED>
+  <!ATTLIST default revision    CDATA #IMPLIED>
+  <!ATTLIST default dest-branch CDATA #IMPLIED>
+  <!ATTLIST default upstream    CDATA #IMPLIED>
+  <!ATTLIST default sync-j      CDATA #IMPLIED>
+  <!ATTLIST default sync-c      CDATA #IMPLIED>
+  <!ATTLIST default sync-s      CDATA #IMPLIED>
+  <!ATTLIST default sync-tags   CDATA #IMPLIED>
+
+  <!ELEMENT manifest-server EMPTY>
+  <!ATTLIST manifest-server url CDATA #REQUIRED>
+
+  <!ELEMENT submanifest EMPTY>
+  <!ATTLIST submanifest name           ID #REQUIRED>
+  <!ATTLIST submanifest remote         IDREF #IMPLIED>
+  <!ATTLIST submanifest project        CDATA #IMPLIED>
+  <!ATTLIST submanifest manifest-name  CDATA #IMPLIED>
+  <!ATTLIST submanifest revision       CDATA #IMPLIED>
+  <!ATTLIST submanifest path           CDATA #IMPLIED>
+  <!ATTLIST submanifest groups         CDATA #IMPLIED>
+  <!ATTLIST submanifest default-groups CDATA #IMPLIED>
+
+  <!ELEMENT project (annotation*,
+                     project*,
+                     copyfile*,
+                     linkfile*)>
+  <!ATTLIST project name        CDATA #REQUIRED>
+  <!ATTLIST project path        CDATA #IMPLIED>
+  <!ATTLIST project remote      IDREF #IMPLIED>
+  <!ATTLIST project revision    CDATA #IMPLIED>
+  <!ATTLIST project dest-branch CDATA #IMPLIED>
+  <!ATTLIST project groups      CDATA #IMPLIED>
+  <!ATTLIST project sync-c      CDATA #IMPLIED>
+  <!ATTLIST project sync-s      CDATA #IMPLIED>
+  <!ATTLIST project sync-tags   CDATA #IMPLIED>
+  <!ATTLIST project upstream CDATA #IMPLIED>
+  <!ATTLIST project clone-depth CDATA #IMPLIED>
+  <!ATTLIST project force-path CDATA #IMPLIED>
+
+  <!ELEMENT annotation EMPTY>
+  <!ATTLIST annotation name  CDATA #REQUIRED>
+  <!ATTLIST annotation value CDATA #REQUIRED>
+  <!ATTLIST annotation keep  CDATA "true">
+
+  <!ELEMENT copyfile EMPTY>
+  <!ATTLIST copyfile src  CDATA #REQUIRED>
+  <!ATTLIST copyfile dest CDATA #REQUIRED>
+
+  <!ELEMENT linkfile EMPTY>
+  <!ATTLIST linkfile src CDATA #REQUIRED>
+  <!ATTLIST linkfile dest CDATA #REQUIRED>
+
+  <!ELEMENT extend-project EMPTY>
+  <!ATTLIST extend-project name CDATA #REQUIRED>
+  <!ATTLIST extend-project path CDATA #IMPLIED>
+  <!ATTLIST extend-project dest-path CDATA #IMPLIED>
+  <!ATTLIST extend-project groups CDATA #IMPLIED>
+  <!ATTLIST extend-project revision CDATA #IMPLIED>
+  <!ATTLIST extend-project remote CDATA #IMPLIED>
+  <!ATTLIST extend-project dest-branch CDATA #IMPLIED>
+  <!ATTLIST extend-project upstream CDATA #IMPLIED>
+
+  <!ELEMENT remove-project EMPTY>
+  <!ATTLIST remove-project name     CDATA #IMPLIED>
+  <!ATTLIST remove-project path     CDATA #IMPLIED>
+  <!ATTLIST remove-project optional CDATA #IMPLIED>
+
+  <!ELEMENT repo-hooks EMPTY>
+  <!ATTLIST repo-hooks in-project CDATA #REQUIRED>
+  <!ATTLIST repo-hooks enabled-list CDATA #REQUIRED>
+
+  <!ELEMENT superproject EMPTY>
+  <!ATTLIST superproject name     CDATA #REQUIRED>
+  <!ATTLIST superproject remote   IDREF #IMPLIED>
+  <!ATTLIST superproject revision CDATA #IMPLIED>
+
+  <!ELEMENT contactinfo EMPTY>
+  <!ATTLIST contactinfo bugurl  CDATA #REQUIRED>
+
+  <!ELEMENT include EMPTY>
+  <!ATTLIST include name     CDATA #REQUIRED>
+  <!ATTLIST include groups   CDATA #IMPLIED>
+  <!ATTLIST include revision CDATA #IMPLIED>
+]>
